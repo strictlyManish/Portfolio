@@ -88,17 +88,6 @@ function Nav() {
               </NavLink>
             </li>
           ))}
-          <li className="px-4 py-2 md:p-0">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-              className="block w-full text-purple-400 hover:text-blue-600"
-            >
-              Resume
-            </a>
-          </li>
         </ul>
       </div>
     </nav>

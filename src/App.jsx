@@ -3,11 +3,11 @@ import Mainroutes from "./routes/Mainroutes";
 
 function App() {
   return (
-    <div className="bg-gray-800 scroll-mb-0 scroll-ml-0">
-      <Nav/>
-      <Mainroutes/>
+    <div className="bg-gray-800 overflow-x-hidden min-h-screen scroll-smooth">
+      <Nav />
+      <Mainroutes />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
