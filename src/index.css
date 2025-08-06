@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  /* For modern browsers (Chrome, Edge, Safari) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  scrollbar-width: none;  
+  
+  /* For Internet Explorer and older Edge */
+  -ms-overflow-style: none;
+}
