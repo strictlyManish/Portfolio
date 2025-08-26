@@ -1,242 +1,287 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiSend, FiAlertCircle } from "react-icons/fi";
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { HiMail, HiPhone, HiLocationMarker, HiClock } from 'react-icons/hi';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPaperPlane } from 'react-icons/fa';
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
-
-  const validate = () => {
-    let newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required.";
-    if (!formData.email) {
-      newErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email address is invalid.";
-    }
-    if (!formData.message) newErrors.message = "Message is required.";
-    return newErrors;
+  const onSubmit = async (data) => {
+    // Simulate an API call
+    setSubmissionStatus('loading');
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setSubmissionStatus('success');
   };
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-
-    // Clear the specific error as the user starts typing
-    if (errors[id]) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [id]: null,
-      }));
+  const contactInfo = [
+    {
+      icon: <HiMail className="text-3xl" />,
+      title: "Email",
+      info: "manish.dev@email.com",
+      description: "Drop me a line anytime",
+      color: "text-blue-400",
+      bgColor: "bg-blue-400/10"
+    },
+    {
+      icon: <HiPhone className="text-3xl" />,
+      title: "Phone",
+      info: "+91 98765 43210",
+      description: "Mon-Fri from 9am to 6pm",
+      color: "text-green-400",
+      bgColor: "bg-green-400/10"
+    },
+    {
+      icon: <HiLocationMarker className="text-3xl" />,
+      title: "Address",
+      info: "Mumbai, Maharashtra",
+      description: "Available for remote work",
+      color: "text-purple-400",
+      bgColor: "bg-purple-400/10"
+    },
+    {
+      icon: <HiClock className="text-3xl" />,
+      title: "Response Time",
+      info: "Within 24 hours",
+      description: "Usually much faster",
+      color: "text-yellow-400",
+      bgColor: "bg-yellow-400/10"
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    const validationErrors = validate();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      // No errors, proceed with submission
-      try {
-        // Simulate an API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log("Form submitted with data:", formData);
-        setSubmitStatus('success');
-        setFormData({ name: "", email: "", message: "" }); // Reset form
-      } catch (error) {
-        setSubmitStatus('error');
-      }
-    } else {
-      setSubmitStatus('error');
-    }
-    setIsSubmitting(false);
-  };
+  ];
 
   return (
-    <section id="contact" className="min-h-screen bg-neutral-900/50 py-16 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-          className="text-center mb-12"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-extrabold text-gray-100 leading-tight mb-4"
-          >
-            Let's <span className="text-purple-600">Connect</span>
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            I'd love to hear from you. Whether you have a question, a project idea, or just want to say hi, feel free to reach out.
-          </motion.p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Contact Info Card */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-            className="bg-gray-700 p-8 rounded-2xl shadow-xl  border-purple-600"
-          >
-            <h3 className="text-2xl font-bold text-gray-100 mb-6">Contact Information</h3>
-            <ul className="space-y-6">
-              <motion.li variants={itemVariants} className="flex items-start gap-4">
-                <FiMail className="text-3xl text-blue-600 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 text-lg">Email Address</h4>
-                  <a href="mailto:manish@example.com" className="text-gray-200 hover:text-blue-600 transition-colors duration-300">
-                    manishraz800@gamil.com
-                  </a>
-                </div>
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-start gap-4">
-                <FiPhone className="text-3xl text-green-600 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 text-lg">Phone Number</h4>
-                  <a href="tel:+919876543210" className="text-gray-200 hover:text-green-600 transition-colors duration-300">
-                    +91 8210328929
-                  </a>
-                </div>
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-start gap-4">
-                <FiMapPin className="text-3xl text-red-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 text-lg">My Location</h4>
-                  <p className="text-gray-200">Gaya JEE , Bihar, India</p>
-                </div>
-              </motion.li>
-            </ul>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="p-8 rounded-2xl  border-gray-200 text-white"
-          >
-            <h3 className="text-2xl font-bold text-gray-400 mb-6">Send me a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Your Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`w-full text-purple-600 px-4 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <FiAlertCircle className="inline-block" /> {errors.name}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="email" className="block  text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="name@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 text-purple-600 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <FiAlertCircle className="inline-block" /> {errors.email}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows="5"
-                  placeholder="How can I help you?"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={`w-full px-4 text-purple-600 py-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
-                ></textarea>
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <FiAlertCircle className="inline-block" /> {errors.message}
-                  </p>
-                )}
-              </div>
-              <button
-                type="submit"
-                className={`w-full flex items-center justify-center gap-2 text-white font-semibold py-3 rounded-lg transition-colors duration-300 transform ${isSubmitting ? 'bg-purple-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700 hover:scale-105'}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Sending...' : (
-                  <>
-                    <FiSend className="text-xl" />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-            {submitStatus === 'success' && (
-              <p className="mt-4 text-center text-green-600 font-medium">
-                Message sent successfully!
-              </p>
-            )}
-            {submitStatus === 'error' && (
-              <p className="mt-4 text-center text-red-600 font-medium">
-                An error occurred. Please try again.
-              </p>
-            )}
-          </motion.div>
+    <div className="min-h-screen bg-neutral-900">
+      {/* HERO SECTION */}
+      <section className="relative py-20 lg:py-32  px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* ... (rest of the hero section code) ... */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
         </div>
-      </div>
-    </section>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-white">
+              Let's Create Something
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 block">
+                Amazing Together
+              </span>
+            </h1>
+            <div className="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-8"></div>
+            <p className="text-xl sm:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
+              Whether you have a project in mind, want to collaborate, or just want to say hello,
+              I'd love to hear from you. Let's turn your ideas into reality!
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`${info.bgColor} backdrop-blur-sm p-6 rounded-xl text-center hover:transform hover:scale-105 transition-all border border-white/10`}
+              >
+                <div className={`${info.color} flex justify-center mb-4`}>{info.icon}</div>
+                <h3 className="text-lg font-semibold text-white mb-2">{info.title}</h3>
+                <p className="text-white font-medium mb-1">{info.info}</p>
+                <p className="text-neutral-300 text-sm">{info.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MAIN CONTACT SECTION */}
+      <section className="py-20 lg:py-32 bg-neutral-800 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl font-bold mb-6 text-white">
+                Send a Message
+                <div className="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mt-2"></div>
+              </h2>
+              <p className="text-neutral-300 mb-8 max-w-md">
+                Fill out the form below to get in touch. I look forward to hearing about your project!
+              </p>
+              
+              {/* Form starts here */}
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name field */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-1">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="John Doe"
+                      {...register('name', { required: 'Name is required' })}
+                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.name ? 'border-red-500' : 'border-neutral-600'}`}
+                    />
+                    {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+                  </div>
+                  
+                  {/* Email field */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-1">Your Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="john.doe@example.com"
+                      {...register('email', { 
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: 'Invalid email address'
+                        }
+                      })}
+                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.email ? 'border-red-500' : 'border-neutral-600'}`}
+                    />
+                    {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
+                  </div>
+                </div>
+
+                {/* Subject field */}
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-neutral-300 mb-1">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    placeholder="Project Inquiry"
+                    {...register('subject', { required: 'Subject is required' })}
+                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.subject ? 'border-red-500' : 'border-neutral-600'}`}
+                  />
+                  {errors.subject && <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>}
+                </div>
+                
+                {/* Message field */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-1">Message</label>
+                  <textarea
+                    id="message"
+                    rows="4"
+                    placeholder="I have a great idea for a..."
+                    {...register('message', { required: 'Message is required' })}
+                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.message ? 'border-red-500' : 'border-neutral-600'}`}
+                  ></textarea>
+                  {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>}
+                </div>
+
+                {/* Submit button with loading/success states */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      Send Message <FaPaperPlane />
+                    </>
+                  )}
+                </button>
+              </form>
+              
+              {/* Submission status messages */}
+              {submissionStatus === 'success' && (
+                <div className="mt-4 p-4 rounded-lg bg-green-500/20 text-green-200">
+                  <p className="font-semibold">Thank you for your message! I'll get back to you shortly.</p>
+                </div>
+              )}
+              {submissionStatus === 'error' && (
+                <div className="mt-4 p-4 rounded-lg bg-red-500/20 text-red-200">
+                  <p className="font-semibold">Oops! Something went wrong. Please try again later.</p>
+                </div>
+              )}
+
+            </motion.div>
+
+            {/* RIGHT SIDE (Contact Info and Social Links) */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              {/* Direct Contact */}
+              <div className="bg-neutral-700 p-8 rounded-xl">
+                <h3 className="text-2xl font-bold mb-6 text-white">Get In Touch Directly</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-purple-600 p-3 rounded-lg">
+                      <HiMail className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Email</p>
+                      <a href="mailto:manish.dev@email.com" className="text-neutral-300 hover:text-purple-400">
+                        manish.dev@email.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-green-600 p-3 rounded-lg">
+                      <HiPhone className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Phone</p>
+                      <a href="tel:+919876543210" className="text-neutral-300 hover:text-green-400">
+                        +91 98765 43210
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-blue-600 p-3 rounded-lg">
+                      <HiLocationMarker className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Location</p>
+                      <p className="text-neutral-300">Mumbai, Maharashtra</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="bg-neutral-700 p-8 rounded-xl">
+                <h3 className="text-2xl font-bold mb-6 text-white">Connect With Me</h3>
+                <div className="flex gap-6">
+                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-white transition">
+                    <FaGithub size={28} />
+                  </a>
+                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-blue-400 transition">
+                    <FaLinkedin size={28} />
+                  </a>
+                  <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-sky-400 transition">
+                    <FaTwitter size={28} />
+                  </a>
+                  <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-pink-400 transition">
+                    <FaInstagram size={28} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 

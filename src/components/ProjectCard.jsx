@@ -4,7 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-// Animation variants for staggered effect
 const cardVariants = {
   hidden: { y: 50, opacity: 0 },
   visible: { y: 0, opacity: 1 },
@@ -16,34 +15,63 @@ function ProjectCard({ project }) {
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ scale: 1.03, y: -5 }}
-      className="bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
+      whileHover={{ scale: 1.05, y: -8 }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col"
     >
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      {/* Image Section with Overlay */}
+      <div className="relative w-full h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80"></div>
+        <h3 className="absolute bottom-3 left-4 text-lg font-bold text-white drop-shadow-md">
+          {title}
+        </h3>
+      </div>
 
+      {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-gray-100 mb-2">{title}</h3>
-        
+        {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, index) => (
-            <span key={index} className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+            <span
+              key={index}
+              className="bg-purple-500/10 text-purple-300 text-xs font-medium px-3 py-1 rounded-full border border-purple-400/30"
+            >
               {tag}
             </span>
           ))}
         </div>
 
-        <p className="text-gray-600 mb-4 flex-grow">{description}</p>
-        
+        {/* Description */}
+        <p className="text-gray-300 mb-6 flex-grow leading-relaxed">
+          {description}
+        </p>
+
+        {/* Buttons */}
         <div className="flex gap-4 mt-auto text-sm">
-         
+          {live && (
+            <a
+              href={live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Live demo of ${title}`}
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5"
+            >
+              Live Demo <FaExternalLinkAlt />
+            </a>
+          )}
           <a
             href={github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`GitHub code for ${title}`}
-            className="text-gray-200 font-semibold flex items-center gap-1.5 hover:underline"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-gray-200 rounded-xl shadow-md hover:bg-gray-600 hover:shadow-lg transition-transform hover:-translate-y-0.5"
           >
-            View Code <FaGithub />
+            Code <FaGithub />
           </a>
         </div>
       </div>
