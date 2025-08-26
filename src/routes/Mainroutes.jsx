@@ -1,18 +1,20 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "../components/Loader";
+
 // Lazy-loaded components
 const Home = lazy(() => import("../pages/Home"));
 const About = lazy(() => import("../pages/About"));
 const Projects = lazy(() => import("../pages/Projects"));
 const Skills = lazy(() => import("../pages/Skills"));
 const Contact = lazy(() => import("../pages/Contact"));
+const NotFound = lazy(() => import("../pages/NotFound"));
 
 function Mainroutes() {
   return (
     <Suspense
       fallback={
-        <div className=" h-screen flex justify-center items-center">
+        <div className="h-screen flex justify-center items-center">
           <Loader />
         </div>
       }
@@ -23,6 +25,7 @@ function Mainroutes() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

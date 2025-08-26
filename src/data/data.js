@@ -6,7 +6,7 @@ export const projects = [
     image:"/public/first.jpeg", 
     tags: ["React", "Tailwind CSS", "Framer Motion"],
     live: "https://your-portfolio-link.com",
-    github: "https://github.com/your-username/portfolio",
+    github: "https://github.com/strictlyManish/portfolio",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const projects = [
     image: "/public/todo.png", 
     tags: ["React", "JavaScript", "CSS Modules"],
     live: "https://your-todo-app-link.com",
-    github: "https://github.com/your-username/todo-app",
+    github: "https://github.com/strictlyManish/todo-app",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const projects = [
     image: "/public/weather.gif", 
     tags: ["React", "API", "Geolocation"],
     live: "https://your-weather-app.com",
-    github: "https://github.com/your-username/weather-app",
+    github: "https://github.com/strictlyManish/weather-app",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const projects = [
     image: "/public/chat.jpg", 
     tags: ["React", "Node.js", "Socket.IO", "Express", "Tailwind CSS"],
     live: "https://your-moddy-player-link.com",
-    github: "https://github.com/your-username/moddy-player-chat-app", 
+    github: "https://github.com/strictlyManish/moddy-player-chat-app", 
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const projects = [
     image: "/public/moody.jpg", 
     tags: ["React", "Tailwind CSS", "Context API", "Framer Motion"],
     live: "https://your-moddy-player-live-link.com",
-    github: "https://github.com/your-username/moddy-player",
+    github: "https://github.com/strictlyManish/moddy-player",
   },
   {
     id: 6,
@@ -51,6 +51,6 @@ export const projects = [
     image: "/public/caption.png",
     tags: ["React", "Express", "OpenAI API", "Multer", "Tailwind CSS"],
     live: "https://your-caption-generator-live-link.com",
-    github: "https://github.com/your-username/caption-generator",
+    github: "https://github.com/strictlyManish/caption-generator",
   }
 ];

@@ -75,7 +75,6 @@ function Contact() {
         setSubmitStatus('success');
         setFormData({ name: "", email: "", message: "" }); // Reset form
       } catch (error) {
-        console.error("Submission error:", error);
         setSubmitStatus('error');
       }
     } else {
@@ -124,7 +123,7 @@ function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900 text-lg">Email Address</h4>
                   <a href="mailto:manish@example.com" className="text-gray-200 hover:text-blue-600 transition-colors duration-300">
-                    manish@example.com
+                    manishraz800@gamil.com
                   </a>
                 </div>
               </motion.li>
@@ -133,7 +132,7 @@ function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900 text-lg">Phone Number</h4>
                   <a href="tel:+919876543210" className="text-gray-200 hover:text-green-600 transition-colors duration-300">
-                    +91 98765 43210
+                    +91 8210328929
                   </a>
                 </div>
               </motion.li>
@@ -141,7 +140,7 @@ function Contact() {
                 <FiMapPin className="text-3xl text-red-500 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-gray-900 text-lg">My Location</h4>
-                  <p className="text-gray-200">Patna, Bihar, India</p>
+                  <p className="text-gray-200">Gaya JEE , Bihar, India</p>
                 </div>
               </motion.li>
             </ul>
