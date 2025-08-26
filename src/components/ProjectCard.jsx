@@ -53,17 +53,6 @@ function ProjectCard({ project }) {
 
         {/* Buttons */}
         <div className="flex gap-4 mt-auto text-sm">
-          {live && (
-            <a
-              href={live}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Live demo of ${title}`}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5"
-            >
-              Live Demo <FaExternalLinkAlt />
-            </a>
-          )}
           <a
             href={github}
             target="_blank"
