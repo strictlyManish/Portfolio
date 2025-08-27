@@ -74,7 +74,7 @@ function About() {
           {/* Hero Image */}
           <div className="flex justify-center">
             <img
-              src="public/about.png" // Replace with your actual photo
+              src="/about.png"
               alt="Manish Kumar"
               className="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-purple-500/50 shadow-lg"
             />
