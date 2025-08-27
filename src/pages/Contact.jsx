@@ -21,7 +21,7 @@ function Contact() {
     {
       icon: <HiMail className="text-3xl" />,
       title: "Email",
-      info: "manish.dev@email.com",
+      info: "manishraz800@gmail.com",
       description: "Drop me a line anytime",
       color: "text-blue-400",
       bgColor: "bg-blue-400/10"
@@ -29,7 +29,7 @@ function Contact() {
     {
       icon: <HiPhone className="text-3xl" />,
       title: "Phone",
-      info: "+91 98765 43210",
+      info: "+91 8210328929",
       description: "Mon-Fri from 9am to 6pm",
       color: "text-green-400",
       bgColor: "bg-green-400/10"
@@ -37,7 +37,7 @@ function Contact() {
     {
       icon: <HiLocationMarker className="text-3xl" />,
       title: "Address",
-      info: "Mumbai, Maharashtra",
+      info: "Gaya jee , Bihar",
       description: "Available for remote work",
       color: "text-purple-400",
       bgColor: "bg-purple-400/10"
@@ -227,8 +227,8 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:manish.dev@email.com" className="text-neutral-300 hover:text-purple-400">
-                        manish.dev@email.com
+                      <a href="mailto:manishraz800@gmail.com" className="text-neutral-300 hover:text-purple-400">
+                        manishraz800@gmail.com
                       </a>
                     </div>
                   </div>
@@ -238,8 +238,8 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Phone</p>
-                      <a href="tel:+919876543210" className="text-neutral-300 hover:text-green-400">
-                        +91 98765 43210
+                      <a href="tel:+918210328929" className="text-neutral-300 hover:text-green-400">
+                        +91 8210328929
                       </a>
                     </div>
                   </div>
@@ -249,7 +249,7 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Location</p>
-                      <p className="text-neutral-300">Mumbai, Maharashtra</p>
+                      <p className="text-neutral-300">Gaya Jee Bihar</p>
                     </div>
                   </div>
                 </div>
@@ -259,19 +259,15 @@ function Contact() {
               <div className="bg-neutral-700 p-8 rounded-xl">
                 <h3 className="text-2xl font-bold mb-6 text-white">Connect With Me</h3>
                 <div className="flex gap-6">
-                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+                  <a href="https://github.com/StrictlyManish" target="_blank" rel="noopener noreferrer"
                     className="text-neutral-300 hover:text-white transition">
                     <FaGithub size={28} />
                   </a>
-                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-blue-400 transition">
-                    <FaLinkedin size={28} />
-                  </a>
-                  <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+                  <a href="https://twitter.com/@XManish_" target="_blank" rel="noopener noreferrer"
                     className="text-neutral-300 hover:text-sky-400 transition">
                     <FaTwitter size={28} />
                   </a>
-                  <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer"
+                  <a href="https://instagram.com/manishraz1789" target="_blank" rel="noopener noreferrer"
                     className="text-neutral-300 hover:text-pink-400 transition">
                     <FaInstagram size={28} />
                   </a>
