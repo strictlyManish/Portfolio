@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html,body{
+  scroll-behavior: smooth;
+}
 
 body {
   /* For modern browsers (Chrome, Edge, Safari) */
