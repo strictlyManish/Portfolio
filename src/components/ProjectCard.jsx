@@ -53,15 +53,31 @@ function ProjectCard({ project }) {
 
         {/* Buttons */}
         <div className="flex gap-4 mt-auto text-sm">
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`GitHub code for ${title}`}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-gray-200 rounded-xl shadow-md hover:bg-gray-600 hover:shadow-lg transition-transform hover:-translate-y-0.5"
-          >
-            Code <FaGithub />
-          </a>
+          {/* Live Demo */}
+          {live && (
+            <a
+              href={live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Live demo of ${title}`}
+              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-xl shadow-md hover:bg-purple-500 hover:shadow-lg transition-transform hover:-translate-y-0.5"
+            >
+              Live <FaExternalLinkAlt />
+            </a>
+          )}
+
+          {/* GitHub Code */}
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`GitHub code for ${title}`}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-gray-200 rounded-xl shadow-md hover:bg-gray-600 hover:shadow-lg transition-transform hover:-translate-y-0.5"
+            >
+              Code <FaGithub />
+            </a>
+          )}
         </div>
       </div>
     </motion.div>

@@ -5,8 +5,8 @@ export const projects = [
     description: "A sleek personal portfolio built with React, Framer Motion, and Tailwind CSS to showcase my skills and projects.",
     image:"/public/first.jpeg", 
     tags: ["React", "Tailwind CSS", "Framer Motion"],
-    live: "https://your-portfolio-link.com",
-    github: "https://github.com/strictlyManish/portfolio",
+    live: "https://manishkumar02.netlify.app/",
+    github: "https://github.com/strictlyManish/Portfolio",
   },
   {
     id: 2,
@@ -14,8 +14,8 @@ export const projects = [
     description: "A feature-rich todo list application with dark mode, drag-and-drop reordering, and local storage persistence.",
     image: "/public/todo.png", 
     tags: ["React", "JavaScript", "CSS Modules"],
-    live: "https://your-todo-app-link.com",
-    github: "https://github.com/strictlyManish/todo-app",
+    // live: "https://your-todo-app-link.com",
+    // github: "https://github.com/strictlyManish/todo-app",
   },
   {
     id: 3,
@@ -23,8 +23,8 @@ export const projects = [
     description: "A clean weather app that provides real-time weather data using the OpenWeatherMap API and geolocation.",
     image: "/public/weather.gif", 
     tags: ["React", "API", "Geolocation"],
-    live: "https://your-weather-app.com",
-    github: "https://github.com/strictlyManish/weather-app",
+    // live: "https://your-weather-app.com",
+    // github: "https://github.com/strictlyManish/weather-app",
   },
   {
     id: 4,
@@ -32,8 +32,8 @@ export const projects = [
     description: "A real-time chat application integrated with a music player, allowing users to listen to music together and discuss it live.",
     image: "/public/chat.jpg", 
     tags: ["React", "Node.js", "Socket.IO", "Express", "Tailwind CSS"],
-    live: "https://your-moddy-player-link.com",
-    github: "https://github.com/strictlyManish/moddy-player-chat-app", 
+    live: "https://own-ai-l7or.onrender.com",
+    github: "https://github.com/strictlyManish/GPT", 
   },
   {
     id: 5,
@@ -41,8 +41,8 @@ export const projects = [
     description: "A sleek music player built with a modern UI, offering seamless audio playback, playlist management, and mood-based music filtering.",
     image: "/public/moody.jpg", 
     tags: ["React", "Tailwind CSS", "Context API", "Framer Motion"],
-    live: "https://your-moddy-player-live-link.com",
-    github: "https://github.com/strictlyManish/moddy-player",
+    // live: "https://your-moddy-player-live-link.com",
+    // github: "https://github.com/strictlyManish/moddy-player",
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ export const projects = [
     description: "An AI-powered tool that generates engaging captions for images using deep learning. Upload an image and get creative text instantly.",
     image: "/public/caption.png",
     tags: ["React", "Express", "OpenAI API", "Multer", "Tailwind CSS"],
-    live: "https://your-caption-generator-live-link.com",
-    github: "https://github.com/strictlyManish/caption-generator",
+    // live: "https://your-caption-generator-live-link.com",
+    // github: "https://github.com/strictlyManish/caption-generator",
   }
 ];
