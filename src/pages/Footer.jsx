@@ -181,10 +181,10 @@ const Footer = () => {
             Built with ❤️ using React & Tailwind CSS.
           </p>
           <div className="flex gap-4">
-            <a href="/privacy" className="hover:text-white">
+            <a href="#" className="hover:text-white">
               Privacy
             </a>
-            <a href="/terms" className="hover:text-white">
+            <a href="#" className="hover:text-white">
               Terms
             </a>
           </div>
