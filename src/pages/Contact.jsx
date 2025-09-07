@@ -238,8 +238,8 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Phone</p>
-                      <a href="tel:+918210328929" className="text-neutral-300 hover:text-green-400">
-                        +91 8210328929
+                      <a href="tel:+918210**8929" className="text-neutral-300 hover:text-green-400">
+                        +91 8210**8929
                       </a>
                     </div>
                   </div>

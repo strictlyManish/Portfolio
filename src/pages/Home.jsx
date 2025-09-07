@@ -32,7 +32,7 @@ const socialLinks = [
 
 const Home = () => {
   return (
-    <div className="bg-neutral-900 text-white overflow-x-hidden">
+    <div className="bg-neutral-900 text-white min-h-screen overflow-hidden">
       {/* Hero Section */}
       <section className="relative z-10 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 md:px-12">
         <div className="max-w-6xl mx-auto w-full">
@@ -128,7 +128,7 @@ const Home = () => {
                  <img
                    src="/hero.png"
                    alt="Manish Kumar - Frontend Developer"
-                   className="rounded-2xl object-cover w-full h-auto max-w-full shadow-2xl"
+                   className="rounded-2xl object-cover w-full h-auto max-w-full"
                  />
                </div>
              </motion.div>
