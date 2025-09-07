@@ -1,6 +1,4 @@
-// src/components/Projects.jsx
 
-import React from "react";
 import { motion } from "framer-motion";
 import { projects } from "../data/data";
 import ProjectCard from "../components/ProjectCard";

@@ -6,15 +6,20 @@ html,body{
   scroll-behavior: smooth;
 }
 
-body {
-  /* For modern browsers (Chrome, Edge, Safari) */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+/* Hide scrollbars while keeping scrolling functional */
+html, body {
+  scroll-behavior: smooth;
+}
 
-  /* For Firefox */
-  scrollbar-width: none;  
-  
+/* For WebKit browsers (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: none;
   /* For Internet Explorer and older Edge */
   -ms-overflow-style: none;
 }

@@ -32,9 +32,9 @@ const socialLinks = [
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-neutral-900 text-white">
+    <div className="bg-neutral-900 text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12">
+      <section className="relative z-10 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 md:px-12">
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
@@ -116,43 +116,43 @@ const Home = () => {
                 </div>
               </div>
             </motion.div>
-
-            {/* Image Section */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center order-1 lg:order-2"
-            >
-              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
-                <img
-                  src="/hero.png"
-                  alt="Manish Kumar - Frontend Developer"
-                  className="rounded-2xl object-cover w-full h-auto shadow-2xl"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <HiArrowDown className="text-white text-xl sm:text-2xl animate-bounce" />
-        </motion.div>
-      </section>
-
-      {/* Page Sections */}
-      <About />
-      <Skills />
-      <Contact />
-      <Footer />
-    </div>
-  );
-};
-
-export default Home;
+ 
+             {/* Image Section */}
+             <motion.div
+               initial={{ opacity: 0, scale: 0.9 }}
+               animate={{ opacity: 1, scale: 1 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="flex justify-center order-1 lg:order-2"
+             >
+               <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+                 <img
+                   src="/hero.png"
+                   alt="Manish Kumar - Frontend Developer"
+                   className="rounded-2xl object-cover w-full h-auto max-w-full shadow-2xl"
+                 />
+               </div>
+             </motion.div>
+           </div>
+         </div>
+ 
+         {/* Scroll Indicator */}
+         <motion.div
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ delay: 1.5 }}
+           className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+         >
+           <HiArrowDown className="text-white text-xl sm:text-2xl animate-bounce" />
+         </motion.div>
+       </section>
+ 
+       {/* Page Sections */}
+       <About />
+       <Skills />
+       <Contact />
+       <Footer />
+     </div>
+   );
+ };
+ 
+ export default Home;
