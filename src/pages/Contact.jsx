@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { HiMail, HiPhone, HiLocationMarker, HiClock } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaPaperPlane } from 'react-icons/fa';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { HiMail, HiPhone, HiLocationMarker, HiClock } from "react-icons/hi";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaInstagram,
+  FaPaperPlane,
+} from "react-icons/fa";
+
+import PixelCard from "../components/PixelCard";
 
 function Contact() {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm();
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const onSubmit = async (data) => {
     // Simulate an API call
-    setSubmissionStatus('loading');
-    
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setSubmissionStatus('success');
+    setSubmissionStatus("loading");
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setSubmissionStatus("success");
   };
 
   const contactInfo = [
@@ -24,7 +36,7 @@ function Contact() {
       info: "manishraz800@gmail.com",
       description: "Drop me a line anytime",
       color: "text-blue-400",
-      bgColor: "bg-blue-400/10"
+      bgColor: "bg-blue-400/10",
     },
     {
       icon: <HiPhone className="text-3xl" />,
@@ -32,7 +44,7 @@ function Contact() {
       info: "+91 8210328929",
       description: "Mon-Fri from 9am to 6pm",
       color: "text-green-400",
-      bgColor: "bg-green-400/10"
+      bgColor: "bg-green-400/10",
     },
     {
       icon: <HiLocationMarker className="text-3xl" />,
@@ -40,7 +52,7 @@ function Contact() {
       info: "Gaya jee , Bihar",
       description: "Available for remote work",
       color: "text-purple-400",
-      bgColor: "bg-purple-400/10"
+      bgColor: "bg-purple-400/10",
     },
     {
       icon: <HiClock className="text-3xl" />,
@@ -48,8 +60,8 @@ function Contact() {
       info: "Within 24 hours",
       description: "Usually much faster",
       color: "text-yellow-400",
-      bgColor: "bg-yellow-400/10"
-    }
+      bgColor: "bg-yellow-400/10",
+    },
   ];
 
   return (
@@ -76,24 +88,25 @@ function Contact() {
             </h1>
             <div className="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-8"></div>
             <p className="text-xl sm:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
-              Whether you have a project in mind, want to collaborate, or just want to say hello,
-              I'd love to hear from you. Let's turn your ideas into reality!
+              Whether you have a project in mind, want to collaborate, or just
+              want to say hello, I'd love to hear from you. Let's turn your
+              ideas into reality!
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`${info.bgColor} backdrop-blur-sm p-6 rounded-xl text-center hover:transform hover:scale-105 transition-all border border-white/10`}
-              >
-                <div className={`${info.color} flex justify-center mb-4`}>{info.icon}</div>
-                <h3 className="text-lg font-semibold text-white mb-2">{info.title}</h3>
+              <PixelCard key={index} variant="pink">
+                <div className="absolute">
+                  <div className={`${info.color} flex justify-center mb-4`}>
+                  {info.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {info.title}
+                </h3>
                 <p className="text-white font-medium mb-1">{info.info}</p>
                 <p className="text-neutral-300 text-sm">{info.description}</p>
-              </motion.div>
+                </div>
+              </PixelCard>
             ))}
           </div>
         </div>
@@ -114,69 +127,118 @@ function Contact() {
                 <div className="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mt-2"></div>
               </h2>
               <p className="text-neutral-300 mb-8 max-w-md">
-                Fill out the form below to get in touch. I look forward to hearing about your project!
+                Fill out the form below to get in touch. I look forward to
+                hearing about your project!
               </p>
-              
+
               {/* Form starts here */}
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name field */}
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-1">Your Name</label>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-neutral-300 mb-1"
+                    >
+                      Your Name
+                    </label>
                     <input
                       type="text"
                       id="name"
                       placeholder="John Doe"
-                      {...register('name', { required: 'Name is required' })}
-                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.name ? 'border-red-500' : 'border-neutral-600'}`}
+                      {...register("name", { required: "Name is required" })}
+                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
+                        errors.name ? "border-red-500" : "border-neutral-600"
+                      }`}
                     />
-                    {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-500">
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
-                  
+
                   {/* Email field */}
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-1">Your Email</label>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-neutral-300 mb-1"
+                    >
+                      Your Email
+                    </label>
                     <input
                       type="email"
                       id="email"
                       placeholder="john.doe@example.com"
-                      {...register('email', { 
-                        required: 'Email is required',
+                      {...register("email", {
+                        required: "Email is required",
                         pattern: {
                           value: /^\S+@\S+$/i,
-                          message: 'Invalid email address'
-                        }
+                          message: "Invalid email address",
+                        },
                       })}
-                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.email ? 'border-red-500' : 'border-neutral-600'}`}
+                      className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
+                        errors.email ? "border-red-500" : "border-neutral-600"
+                      }`}
                     />
-                    {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-500">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 {/* Subject field */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-neutral-300 mb-1">Subject</label>
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Subject
+                  </label>
                   <input
                     type="text"
                     id="subject"
                     placeholder="Project Inquiry"
-                    {...register('subject', { required: 'Subject is required' })}
-                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.subject ? 'border-red-500' : 'border-neutral-600'}`}
+                    {...register("subject", {
+                      required: "Subject is required",
+                    })}
+                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
+                      errors.subject ? "border-red-500" : "border-neutral-600"
+                    }`}
                   />
-                  {errors.subject && <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>}
+                  {errors.subject && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.subject.message}
+                    </p>
+                  )}
                 </div>
-                
+
                 {/* Message field */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-1">Message</label>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Message
+                  </label>
                   <textarea
                     id="message"
                     rows="4"
-                    placeholder="I have a great idea for a..."
-                    {...register('message', { required: 'Message is required' })}
-                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${errors.message ? 'border-red-500' : 'border-neutral-600'}`}
+                    placeholder="Your message..."
+                    {...register("message", {
+                      required: "Message is required",
+                    })}
+                    className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
+                      errors.message ? "border-red-500" : "border-neutral-600"
+                    }`}
                   ></textarea>
-                  {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit button with loading/success states */}
@@ -186,7 +248,7 @@ function Contact() {
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    'Sending...'
+                    "Sending..."
                   ) : (
                     <>
                       Send Message <FaPaperPlane />
@@ -194,19 +256,22 @@ function Contact() {
                   )}
                 </button>
               </form>
-              
-              {/* Submission status messages */}
-              {submissionStatus === 'success' && (
-                <div className="mt-4 p-4 rounded-lg bg-green-500/20 text-green-200">
-                  <p className="font-semibold">Thank you for your message! I'll get back to you shortly.</p>
-                </div>
-              )}
-              {submissionStatus === 'error' && (
-                <div className="mt-4 p-4 rounded-lg bg-red-500/20 text-red-200">
-                  <p className="font-semibold">Oops! Something went wrong. Please try again later.</p>
-                </div>
-              )}
 
+              {/* Submission status messages */}
+              {submissionStatus === "success" && (
+                <div className="mt-4 p-4 rounded-lg bg-green-500/20 text-green-200">
+                  <p className="font-semibold">
+                    Thank you for your message! I'll get back to you shortly.
+                  </p>
+                </div>
+              )}
+              {submissionStatus === "error" && (
+                <div className="mt-4 p-4 rounded-lg bg-red-500/20 text-red-200">
+                  <p className="font-semibold">
+                    Oops! Something went wrong. Please try again later.
+                  </p>
+                </div>
+              )}
             </motion.div>
 
             {/* RIGHT SIDE (Contact Info and Social Links) */}
@@ -219,7 +284,9 @@ function Contact() {
             >
               {/* Direct Contact */}
               <div className="bg-neutral-700 p-8 rounded-xl">
-                <h3 className="text-2xl font-bold mb-6 text-white">Get In Touch Directly</h3>
+                <h3 className="text-2xl font-bold mb-6 text-white">
+                  Get In Touch Directly
+                </h3>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="bg-purple-600 p-3 rounded-lg">
@@ -227,7 +294,10 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:manishraz800@gmail.com" className="text-neutral-300 hover:text-purple-400">
+                      <a
+                        href="mailto:manishraz800@gmail.com"
+                        className="text-neutral-300 hover:text-purple-400"
+                      >
                         manishraz800@gmail.com
                       </a>
                     </div>
@@ -238,7 +308,10 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Phone</p>
-                      <a href="tel:+918210**8929" className="text-neutral-300 hover:text-green-400">
+                      <a
+                        href="tel:+918210**8929"
+                        className="text-neutral-300 hover:text-green-400"
+                      >
                         +91 8210**8929
                       </a>
                     </div>
@@ -257,18 +330,32 @@ function Contact() {
 
               {/* Social Links */}
               <div className="bg-neutral-700 p-8 rounded-xl">
-                <h3 className="text-2xl font-bold mb-6 text-white">Connect With Me</h3>
+                <h3 className="text-2xl font-bold mb-6 text-white">
+                  Connect With Me
+                </h3>
                 <div className="flex gap-6">
-                  <a href="https://github.com/StrictlyManish" target="_blank" rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-white transition">
+                  <a
+                    href="https://github.com/StrictlyManish"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-white transition"
+                  >
                     <FaGithub size={28} />
                   </a>
-                  <a href="https://twitter.com/@XManish_" target="_blank" rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-sky-400 transition">
+                  <a
+                    href="https://twitter.com/@XManish_"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-sky-400 transition"
+                  >
                     <FaTwitter size={28} />
                   </a>
-                  <a href="https://instagram.com/manishraz1789" target="_blank" rel="noopener noreferrer"
-                    className="text-neutral-300 hover:text-pink-400 transition">
+                  <a
+                    href="https://instagram.com/manishraz1789"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-300 hover:text-pink-400 transition"
+                  >
                     <FaInstagram size={28} />
                   </a>
                 </div>

@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { FaHtml5, FaCss3Alt, FaReact, FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { HiArrowDown } from "react-icons/hi";
 import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
 import Footer from "../pages/Footer";
 import About from "../pages/About";
+import CurvedLoop from './../components/CurvedLoop';
 
-const typewriterWords = [
-  "Manish Kumar",
-  "Web Dev"
-];
+const typewriterWords = ["Manish Kumar", "Web Dev"];
 
 const techStack = [
   { icon: FaHtml5, color: "text-orange-500", title: "HTML5" },
@@ -22,12 +26,12 @@ const techStack = [
 ];
 
 const socialLinks = [
-  { 
-    href: "https://github.com/strictlyManish", 
-    icon: FaGithub, 
-    hoverColor: "hover:text-white", 
-    ariaLabel: "GitHub Profile" 
-  }
+  {
+    href: "https://github.com/strictlyManish",
+    icon: FaGithub,
+    hoverColor: "hover:text-white",
+    ariaLabel: "GitHub Profile",
+  },
 ];
 
 const Home = () => {
@@ -37,7 +41,6 @@ const Home = () => {
       <section className="relative z-10 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 md:px-12">
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            
             {/* Text Section */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -65,9 +68,9 @@ const Home = () => {
                 <span className="text-purple-400 font-semibold">
                   Frontend Developer
                 </span>{" "}
-                passionate about creating beautiful, performant websites and apps.
-                I enjoy crafting responsive, accessible interfaces using React and
-                Tailwind CSS.
+                passionate about creating beautiful, performant websites and
+                apps. I enjoy crafting responsive, accessible interfaces using
+                React and Tailwind CSS.
               </p>
 
               {/* CTA Buttons */}
@@ -104,7 +107,9 @@ const Home = () => {
 
               {/* Tech Stack */}
               <div className="text-center lg:text-left">
-                <p className="mb-3 sm:mb-4 font-medium text-base sm:text-lg">Tech Stack:</p>
+                <p className="mb-3 sm:mb-4 font-medium text-base sm:text-lg">
+                  Tech Stack:
+                </p>
                 <div className="flex flex-wrap gap-4 sm:gap-6 text-2xl sm:text-3xl justify-center lg:justify-start">
                   {techStack.map((tech, index) => (
                     <tech.icon
@@ -116,43 +121,49 @@ const Home = () => {
                 </div>
               </div>
             </motion.div>
- 
-             {/* Image Section */}
-             <motion.div
-               initial={{ opacity: 0, scale: 0.9 }}
-               animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 0.8, delay: 0.2 }}
-               className="flex justify-center order-1 lg:order-2"
-             >
-               <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
-                 <img
-                   src="/hero.png"
-                   alt="Manish Kumar - Frontend Developer"
-                   className="rounded-2xl object-cover w-full h-auto max-w-full"
-                 />
-               </div>
-             </motion.div>
-           </div>
-         </div>
- 
-         {/* Scroll Indicator */}
-         <motion.div
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ delay: 1.5 }}
-           className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-         >
-           <HiArrowDown className="text-white text-xl sm:text-2xl animate-bounce" />
-         </motion.div>
-       </section>
- 
-       {/* Page Sections */}
-       <About />
-       <Skills />
-       <Contact />
-       <Footer />
-     </div>
-   );
- };
- 
- export default Home;
+
+            {/* Image Section */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center order-1 lg:order-2"
+            >
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+                <img
+                  src="/hero.png"
+                  alt="Manish Kumar - Frontend Developer"
+                  className="rounded-2xl object-cover w-full h-auto max-w-full"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <HiArrowDown className="text-white text-xl sm:text-2xl animate-bounce" />
+        </motion.div>
+      </section>
+
+      {/* Page Sections */}
+      <About />
+      <CurvedLoop
+        marqueeText=" Manish Kumar  •  Frontend Developer  •  React  •  Tailwind CSS  •  JavaScript  •  HTML5  •  CSS3  •  GitHub  •  LinkedIn "
+        speed={1}
+        curveAmount={300}
+        interactive={false}
+      />
+      <Skills />
+      <Contact />
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;

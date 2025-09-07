@@ -10,6 +10,8 @@ import {
 import { IoLogoJavascript } from "react-icons/io";
 import { SiTailwindcss, SiMongodb, SiExpress, SiVercel } from "react-icons/si";
 import ShinyText from "../components/ShinyText";
+import CircularText from "./../components/CircularText";
+import SpotlightCard from './../components/SpotlightCard';
 
 function About() {
   const skills = {
@@ -47,7 +49,10 @@ function About() {
           className="md:col-span-3"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Me</span>
+            About{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+              Me
+            </span>
           </h1>
 
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mb-6"></div>
@@ -73,15 +78,22 @@ function About() {
         >
           {/* Hero Image */}
           <div className="flex justify-center">
-            <img
-              src="/about.png"
-              alt="Manish Kumar"
-              className="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-purple-500/50 shadow-lg"
+            <CircularText
+              text="*FRONTEND*RACTJS*DEVELOPER "
+              onHover="speedUp"
+              spinDuration={20}
+              className="custom-class"
             />
           </div>
 
           {/* SKILLS Cards */}
-          <div className="bg-neutral-800 p-6 rounded-lg border border-neutral-700 shadow-xl">
+          {/* <div className="bg-neutral-800 p-6 rounded-lg border border-neutral-700 shadow-xl">
+            
+          </div> */}
+          <SpotlightCard
+            className="bg-transparent p-6 rounded-lg border border-neutral-700 shadow-xl"
+            spotlightColor="rgba(0, 229, 255, 0.2)"
+          >
             {Object.entries(skills).map(([category, skillList]) => (
               <div key={category} className="mb-4 last:mb-0">
                 <h3 className="text-purple-400 font-semibold mb-3 text-lg border-l-4 border-pink-400 pl-2">
@@ -104,7 +116,7 @@ function About() {
                 </div>
               </div>
             ))}
-          </div>
+          </SpotlightCard>
         </motion.div>
       </div>
     </section>

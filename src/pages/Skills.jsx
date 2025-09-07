@@ -49,7 +49,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-20 lg:py-32 bg-neutral-900 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-20 lg:py-32 bg-transparent px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Background glow effects */}
       <div className="absolute inset-0 overflow-hidden">
@@ -68,7 +68,7 @@ function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-white">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-white">
             My{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
               Skills
