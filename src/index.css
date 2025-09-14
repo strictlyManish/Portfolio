@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body{
+html,
+body {
   scroll-behavior: smooth;
 }
 
+/* For Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+  /* Hides scrollbar */
+  -ms-overflow-style: none;
+  /* For IE and Edge */
+}
+
+
 /* Hide scrollbars while keeping scrolling functional */
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 
