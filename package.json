@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "emailjs": "^4.0.3",
     "framer-motion": "^12.23.12",
     "motion": "^12.23.12",
     "ogl": "^1.0.11",

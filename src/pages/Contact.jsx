@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+
 import { HiMail, HiPhone, HiLocationMarker, HiClock } from "react-icons/hi";
 import {
   FaGithub,
-  FaLinkedin,
   FaTwitter,
   FaInstagram,
   FaPaperPlane,
@@ -16,17 +17,33 @@ function Contact() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const onSubmit = async (data) => {
-    // Simulate an API call
     setSubmissionStatus("loading");
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      await emailjs.send(
+        "service_56uq7ul", // 🔑 Replace with your emailjs service ID
+        "template_xq5wp7n", // 🔑 Replace with your EmailJS template ID
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        "LVVMQia1U2bWxnEiM" // 🔑 Replace with your EmailJS public key
+      );
 
-    setSubmissionStatus("success");
+      setSubmissionStatus("success");
+      reset(); // ✅ clears form
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmissionStatus("error");
+    }
   };
 
   const contactInfo = [
@@ -49,7 +66,7 @@ function Contact() {
     {
       icon: <HiLocationMarker className="text-3xl" />,
       title: "Address",
-      info: "Gaya jee , Bihar",
+      info: "Gaya Jee, Bihar",
       description: "Available for remote work",
       color: "text-purple-400",
       bgColor: "bg-purple-400/10",
@@ -67,8 +84,7 @@ function Contact() {
   return (
     <div className="min-h-screen bg-neutral-900">
       {/* HERO SECTION */}
-      <section className="relative py-20 lg:py-32  px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* ... (rest of the hero section code) ... */}
+      <section className="relative py-20 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
           <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
@@ -93,18 +109,19 @@ function Contact() {
               ideas into reality!
             </p>
           </motion.div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {contactInfo.map((info, index) => (
               <PixelCard key={index} variant="pink">
                 <div className="absolute">
                   <div className={`${info.color} flex justify-center mb-4`}>
-                  {info.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {info.title}
-                </h3>
-                <p className="text-white font-medium mb-1">{info.info}</p>
-                <p className="text-neutral-300 text-sm">{info.description}</p>
+                    {info.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {info.title}
+                  </h3>
+                  <p className="text-white font-medium mb-1">{info.info}</p>
+                  <p className="text-neutral-300 text-sm">{info.description}</p>
                 </div>
               </PixelCard>
             ))}
@@ -116,6 +133,7 @@ function Contact() {
       <section className="py-20 lg:py-32 bg-neutral-800 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* LEFT SIDE: Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -131,20 +149,16 @@ function Contact() {
                 hearing about your project!
               </p>
 
-              {/* Form starts here */}
+              {/* Form */}
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Name field */}
+                  {/* Name */}
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-neutral-300 mb-1"
-                    >
+                    <label className="block text-sm font-medium text-neutral-300 mb-1">
                       Your Name
                     </label>
                     <input
                       type="text"
-                      id="name"
                       placeholder="John Doe"
                       {...register("name", { required: "Name is required" })}
                       className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
@@ -158,17 +172,13 @@ function Contact() {
                     )}
                   </div>
 
-                  {/* Email field */}
+                  {/* Email */}
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-neutral-300 mb-1"
-                    >
+                    <label className="block text-sm font-medium text-neutral-300 mb-1">
                       Your Email
                     </label>
                     <input
                       type="email"
-                      id="email"
                       placeholder="john.doe@example.com"
                       {...register("email", {
                         required: "Email is required",
@@ -189,21 +199,15 @@ function Contact() {
                   </div>
                 </div>
 
-                {/* Subject field */}
+                {/* Subject */}
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-neutral-300 mb-1"
-                  >
+                  <label className="block text-sm font-medium text-neutral-300 mb-1">
                     Subject
                   </label>
                   <input
                     type="text"
-                    id="subject"
                     placeholder="Project Inquiry"
-                    {...register("subject", {
-                      required: "Subject is required",
-                    })}
+                    {...register("subject", { required: "Subject is required" })}
                     className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
                       errors.subject ? "border-red-500" : "border-neutral-600"
                     }`}
@@ -215,21 +219,15 @@ function Contact() {
                   )}
                 </div>
 
-                {/* Message field */}
+                {/* Message */}
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-neutral-300 mb-1"
-                  >
+                  <label className="block text-sm font-medium text-neutral-300 mb-1">
                     Message
                   </label>
                   <textarea
-                    id="message"
                     rows="4"
                     placeholder="Your message..."
-                    {...register("message", {
-                      required: "Message is required",
-                    })}
+                    {...register("message", { required: "Message is required" })}
                     className={`w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border focus:border-purple-400 focus:outline-none transition ${
                       errors.message ? "border-red-500" : "border-neutral-600"
                     }`}
@@ -241,7 +239,7 @@ function Contact() {
                   )}
                 </div>
 
-                {/* Submit button with loading/success states */}
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -257,24 +255,20 @@ function Contact() {
                 </button>
               </form>
 
-              {/* Submission status messages */}
+              {/* Status messages */}
               {submissionStatus === "success" && (
                 <div className="mt-4 p-4 rounded-lg bg-green-500/20 text-green-200">
-                  <p className="font-semibold">
-                    Thank you for your message! I'll get back to you shortly.
-                  </p>
+                  ✅ Thank you for your message! I'll get back to you shortly.
                 </div>
               )}
               {submissionStatus === "error" && (
                 <div className="mt-4 p-4 rounded-lg bg-red-500/20 text-red-200">
-                  <p className="font-semibold">
-                    Oops! Something went wrong. Please try again later.
-                  </p>
+                  ❌ Oops! Something went wrong. Please try again later.
                 </div>
               )}
             </motion.div>
 
-            {/* RIGHT SIDE (Contact Info and Social Links) */}
+            {/* RIGHT SIDE: Contact + Socials */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -282,7 +276,6 @@ function Contact() {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              {/* Direct Contact */}
               <div className="bg-neutral-700 p-8 rounded-xl">
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   Get In Touch Directly
@@ -309,10 +302,10 @@ function Contact() {
                     <div>
                       <p className="font-semibold text-white">Phone</p>
                       <a
-                        href="tel:+918210**8929"
+                        href="tel:+918210328929"
                         className="text-neutral-300 hover:text-green-400"
                       >
-                        +91 8210**8929
+                        +91 8210328929
                       </a>
                     </div>
                   </div>
@@ -322,13 +315,12 @@ function Contact() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">Location</p>
-                      <p className="text-neutral-300">Gaya Jee Bihar</p>
+                      <p className="text-neutral-300">Gaya Jee, Bihar</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Social Links */}
               <div className="bg-neutral-700 p-8 rounded-xl">
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   Connect With Me
