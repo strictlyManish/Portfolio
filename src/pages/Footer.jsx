@@ -110,7 +110,7 @@ const Footer = () => {
           >
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-wide">
               <span className="bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
-                Manish Kumar
+                RAJZ MANISH
               </span>
             </h2>
             <p className="text-neutral-400 max-w-sm mx-auto md:mx-0">
@@ -169,7 +169,7 @@ const Footer = () => {
             </div>
 
             <div className="mt-6 text-xs text-neutral-500 text-right">
-              <p>© {new Date().getFullYear()} Manish Kumar</p>
+              <p>© {new Date().getFullYear()} RAJZ MANISH</p>
               <p className="mt-1">All Rights Reserved.</p>
             </div>
           </motion.div>

@@ -53,7 +53,7 @@ function Nav() {
         {/* LOGO */}
         <h1 className="text-2xl font-bold">
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-            Manish Kumar
+            RAJZ MANISH
           </span>
         </h1>
 

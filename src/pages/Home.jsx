@@ -16,7 +16,7 @@ import Footer from "../pages/Footer";
 import About from "../pages/About";
 import CurvedLoop from './../components/CurvedLoop';
 
-const typewriterWords = ["Manish Kumar", "Web Dev"];
+const typewriterWords = ["RAJZ MANISH", "Web Dev"];
 
 const techStack = [
   { icon: FaHtml5, color: "text-orange-500", title: "HTML5" },
@@ -132,7 +132,7 @@ const Home = () => {
               <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
                 <img
                   src="/hero.png"
-                  alt="Manish Kumar - Frontend Developer"
+                  alt="RAJZ MANISH - Frontend Developer"
                   className="rounded-2xl object-cover w-full h-auto max-w-full"
                 />
               </div>
@@ -154,7 +154,7 @@ const Home = () => {
       {/* Page Sections */}
       <About />
       <CurvedLoop
-        marqueeText=" Manish Kumar  •  Frontend Developer  •  React  •  Tailwind CSS  •  JavaScript  •  HTML5  •  CSS3  •  GitHub  •  LinkedIn "
+        marqueeText=" RAJZ MANISH  •  Frontend Developer  •  React  •  Tailwind CSS  •  JavaScript  •  HTML5  •  CSS3  •  GitHub  •  LinkedIn "
         speed={1}
         curveAmount={300}
         interactive={false}

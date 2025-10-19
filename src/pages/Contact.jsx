@@ -343,7 +343,7 @@ function Contact() {
                     <FaTwitter size={28} />
                   </a>
                   <a
-                    href="https://instagram.com/manishraz1789"
+                    href="https://www.instagram.com/rajzmanish_/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-neutral-300 hover:text-pink-400 transition"
