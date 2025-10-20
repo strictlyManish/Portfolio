@@ -58,7 +58,7 @@ function Contact() {
     {
       icon: <HiPhone className="text-3xl" />,
       title: "Phone",
-      info: "+91 8210328929",
+      info: "+91 821032**29",
       description: "Mon-Fri from 9am to 6pm",
       color: "text-green-400",
       bgColor: "bg-green-400/10",
