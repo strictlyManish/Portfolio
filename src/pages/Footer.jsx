@@ -126,13 +126,7 @@ const Footer = () => {
               >
                 Resume
               </a>
-              <a
-                href="/projects"
-                className="text-sm px-3 py-2 rounded-md bg-white/5 text-white hover:brightness-110 transition"
-                aria-label="See Projects"
-              >
-                Projects
-              </a>
+              
             </div>
           </motion.div>
 

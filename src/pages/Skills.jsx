@@ -13,6 +13,7 @@ import {
   SiRedux,
   SiVite,
   SiFigma,
+  SiPython,
 } from "react-icons/si";
 
 // Skills data
@@ -26,7 +27,9 @@ const skills = [
       { name: "React", icon: <SiReact className="text-cyan-500" />, description: "Developing interactive UIs using components.", level: 80 },
       { name: "Redux", icon: <SiRedux className="text-purple-500" />, description: "Managing state with predictable state containers.", level: 70 },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" />, description: "Utility-first CSS framework for rapid UI.", level: 85 },
-    ],
+      { name: "Python", icon: <SiPython className="text-yellow-500" />, description: "Scripting, automation and backend development.", level: 35 },
+    ]
+
   },
   {
     category: "Tools & Workflow",
@@ -59,7 +62,7 @@ function Skills() {
 
       {/* Content wrapper */}
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
