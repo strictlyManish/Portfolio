@@ -52,7 +52,7 @@ function Nav() {
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-4 text-white">
         {/* LOGO */}
         <h1 className="text-2xl font-bold">
-          <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+          <span className="text-white bg-clip-text">
             RAJZ MANISH
           </span>
         </h1>
