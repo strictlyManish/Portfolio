@@ -5,8 +5,7 @@ export const projects = [
     description: "A sleek personal portfolio built with React, Framer Motion, and Tailwind CSS to showcase my skills and projects.",
     image: "/first.jpeg",
     tags: ["React", "Tailwind CSS", "Framer Motion"],
-    live: "https://manishkumar02.netlify.app/",
-    github: "https://github.com/strictlyManish/Portfolio",
+    
   },
   {
     id: 3,
@@ -43,5 +42,15 @@ export const projects = [
     tags: ["React", "Express", "OpenAI API", "Multer", "Tailwind CSS"],
     // live: "https://your-caption-generator-live-link.com",
     github: "https://github.com/strictlyManish/Backend_Series/tree/main/Day%2016%20to%2019%20(Caption%20Genrator)",
-  }
+  },
+  {
+    id: 7,
+    title: "Realtime Chat App",
+    description: "A fast and responsive real-time chat application built with MERN, featuring instant messaging, user authentication, online status indicators, and smooth UI interactions.",
+    image: "/chatapp.jpg",
+    tags: ["MERN", "Socket.io", "Tailwind CSS", "JWT", "Redux-toolkit"],
+    live: "https://astrachat.onrender.com/",
+    github: "https://github.com/strictlyManish/Chat-app",
+  },
+
 ];
